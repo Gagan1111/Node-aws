@@ -8,7 +8,7 @@ const port = 80;
 const app = express();
 
 const connection = mysql.createConnection({
-  host: '3.89.97.39',
+  host: 'ip-172-31-23-56.ec2.internal',
   user: 'new_user',
   password: 'new_password',
   database: 'mysql'
