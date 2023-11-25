@@ -8,10 +8,11 @@ const port = 80;
 const app = express();
 
 const connection = mysql.createConnection({
-  host: 'ip-172-31-23-56.ec2.internal',
-  user: 'new_user',
-  password: 'new_password',
-  database: 'mysql'
+  host: 'database-2.crus4vmhm48u.us-east-1.rds.amazonaws.com',
+  user: 'admin',
+  password: 'password',
+  database: 'database_1',
+  port:'3306'
 });
 
 // Establish the connection
@@ -23,25 +24,14 @@ connection.connect((err) => {
 
   console.log('Connected to MySQL database');
 
-  // Your application logic goes here
-
-  app.listen(port, function () {
-    console.log("server starting on " + port)
-  })
-  
-  
   app.get("", (request, response, next) => {
     response.send("AWS Nodejs  application");
   
   })
-
-  // Close the connection when done
-  connection.end((err) => {
-      if (err) {
-          console.error('Error closing MySQL connection:', err);
-      } else {
-          console.log('MySQL connection closed');
-      }
-  });
+  
 });
+app.listen(port, function () {
+  console.log("server starting on " + port)
+})
+
 
